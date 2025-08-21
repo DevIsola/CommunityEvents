@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import EventService from '@/services/EventService.js'
+import router from "@/router/index.js";
 
 const event = ref(null)
 const props = defineProps({
@@ -17,7 +18,10 @@ onMounted(() => {
       // console.log("events:", response.data);
     })
     .catch((error) => {
-      console.log(error)
+      router.push({
+        name: '404',
+        params: { resource: 'event' }
+      })
     })
 })
 </script>
